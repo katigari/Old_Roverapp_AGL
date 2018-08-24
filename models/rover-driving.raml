@@ -1,0 +1,52 @@
+#%RAML 1.0
+title: Rover driving
+mediaType: application/json
+version: v1
+baseUri: localhost:8000/api?token=x
+types:
+  rover_sensor_id:
+    enum:
+      - rear_right
+      - front_right
+      - rear_left
+      - front_left
+      - front
+      - rear
+  rover_button_id:
+    enum:
+      - user_button
+      - shutdown_button
+      - custom_button
+  rover_demo_id:
+    enum:
+      - buzzer
+      - driving
+      - buttons
+      - infrared
+      - rover_demo_max
+/goforward:
+  description: "Move Forward"
+/gobackward:
+  description: "Move Backwards"
+/turnright:
+  description: "Rotate Right"
+/turnleft:
+  description: "Rotate Left"
+/stop:
+  description: "Stop the Rover"
+/turnforwardright:
+  description: "Turn Forward Right"
+/turnforwardleft:
+  description: "Turn Forward Left"
+/turnbackwardright:
+  description: "Turn Backward Right"
+/turnbackwardleft:
+  description: "Turn Backward Left"
+/setspeed:
+  description: "Set the motors' speed"
+  post:
+    body:
+      application/json:
+        properties:
+          speed:
+            type: integer

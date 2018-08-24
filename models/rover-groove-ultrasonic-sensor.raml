@@ -1,0 +1,77 @@
+#%RAML 1.0
+title: Rover Groove Ultrasonic Sensor
+mediaType: application/json
+version: v1
+baseUri: localhost:8000/api?token=x
+types:
+  rover_sensor_id:
+    enum:
+      - rear_right
+      - front_right
+      - rear_left
+      - front_left
+      - front
+      - rear
+  rover_button_id:
+    enum:
+      - user_button
+      - shutdown_button
+      - custom_button
+  rover_demo_id:
+    enum:
+      - buzzer
+      - driving
+      - buttons
+      - infrared
+      - rover_demo_max
+/read:
+  description: "Read Data From Sensor"
+  post:
+    body:
+      properties:
+        sensor_id:
+          type: rover_sensor_id
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            distance:
+              type: number
+/check:
+  description: "Check if the sensor is enabled"
+  post:
+    body:
+      properties:
+        sensor_id:
+          type: rover_sensor_id
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            enable:
+              type: boolean
+/set_sig_pin:
+  description: "Sets the private attribute sigPin for Groove Ultrasonic Sensor"
+  post:
+    body:
+      properties:
+        sensor_id:
+          type: rover_sensor_id
+        sig_pin:
+          type: integer
+/get_sig_pin:
+  description: "Sets the private attribute sigPin for Groove Ultrasonic Sensor"
+  post:
+    body:
+      properties:
+        sensor_id:
+          type: rover_sensor_id
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            sig_pin:
+              type: integer

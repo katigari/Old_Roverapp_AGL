@@ -1,0 +1,16 @@
+project({{ info.short_name }})
+cmake_minimum_required(VERSION 3.3)
+
+# Headers
+include_directories(${CMAKE_SOURCE_DIR}/include)
+
+# All CPP files
+file(GLOB all_cpp_sources "src/*.cpp")
+
+# Define project Targets
+ADD_LIBRARY({{ info.short_name }} SHARED ${all_cpp_sources})
+
+# Install
+install(TARGETS {{ info.short_name }}
+        LIBRARY DESTINATION lib)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/include/app DESTINATION include)

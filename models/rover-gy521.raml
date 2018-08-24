@@ -1,0 +1,107 @@
+#%RAML 1.0
+title: Rover GY521
+mediaType: application/json
+version: v1
+baseUri: localhost:8000/api?token=x
+types:
+  rover_sensor_id:
+    enum:
+      - rear_right
+      - front_right
+      - rear_left
+      - front_left
+      - front
+      - rear
+  rover_button_id:
+    enum:
+      - user_button
+      - shutdown_button
+      - custom_button
+  rover_demo_id:
+    enum:
+      - buzzer
+      - driving
+      - buttons
+      - infrared
+      - rover_demo_max
+/read_gyro_x:
+  description: "Read Gyro X"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            gyro_x:
+              type: integer
+/read_gyro_y:
+  description: "Read Gyro Y"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            gyro_y:
+              type: integer
+/read_gyro_z:
+  description: "Read Gyro Z"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            gyro_z:
+              type: integer
+/read_acc_x:
+  description: "Read Acceleration X"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            acc_x:
+              type: integer
+/read_acc_y:
+  description: "Read Acceleration Y"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            acc_y:
+              type: integer
+/read_acc_z:
+  description: "Read Acceleration Z"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            acc_z:
+              type: integer
+/read_angle_x:
+  description: "Read Angle X"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            angle_x:
+              type: number
+/read_angle_y:
+  description: "Read Angle Y"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            angle_y:
+              type: number
+/read_angle_z:
+  description: "Read Angle Z"
+  get:
+    responses:
+      200:
+        body:
+          properties:
+            angle_z:
+              type: number
